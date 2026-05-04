@@ -9,7 +9,7 @@ pipeline {
 
     stage('Clone Code') {
       steps {
-        git 'https://github.com/YOUR_USERNAME/notes-devops-app'
+        git 'https://github.com/YOUR_USERNAME/notes-devops-app.git'
       }
     }
 
@@ -25,10 +25,20 @@ pipeline {
       }
     }
 
-    stage('Push Images') {
+    stage('Login + Push Docker Images') {
       steps {
-        sh 'docker push $DOCKERHUB_REPO/notes-backend'
-        sh 'docker push $DOCKERHUB_REPO/notes-frontend'
+        withCredentials([usernamePassword(
+          credentialsId: 'dockerhub-cred',
+          usernameVariable: 'USER',
+          passwordVariable: 'PASS'
+        )]) {
+          sh '''
+            echo $PASS | docker login -u $USER --password-stdin
+
+            docker push $DOCKERHUB_REPO/notes-backend
+            docker push $DOCKERHUB_REPO/notes-frontend
+          '''
+        }
       }
     }
 
