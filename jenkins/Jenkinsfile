@@ -44,9 +44,13 @@ pipeline {
 
     stage('Deploy with Helm') {
       steps {
-        sh 'helm upgrade --install mongodb ./helm/mongodb'
-        sh 'helm upgrade --install backend ./helm/backend'
-        sh 'helm upgrade --install frontend ./helm/frontend'
+        sh '''
+         export KUBECONFIG=/var/lib/jenkins/.kube/config
+
+         helm upgrade --install mongodb ./helm/mongodb
+         helm upgrade --install backend ./helm/backend
+         helm upgrade --install frontend ./helm/frontend
+        '''
       }
     }
   }
