@@ -1,0 +1,12 @@
+grafana:
+  adminPassword: admin
+
+  service:
+    type: ClusterIP
+
+prometheus:
+  service:
+    type: ClusterIP
+
+  prometheusSpec:
+    scrapeInterval: 15s

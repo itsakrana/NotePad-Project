@@ -1,0 +1,9 @@
+image:
+  repository: akrana2006/notes-backend
+  tag: latest
+
+service:
+  port: 5000
+
+env:
+  MONGO_URI: mongodb://mongodb:27017/notesdb

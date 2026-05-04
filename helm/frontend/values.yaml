@@ -1,0 +1,6 @@
+image:
+  repository: akrana2006/notes-frontend
+  tag: latest
+
+service:
+  port: 80

@@ -1,0 +1,43 @@
+pipeline {
+  agent any
+
+  environment {
+    DOCKERHUB_REPO = "your-dockerhub-username"
+  }
+
+  stages {
+
+    stage('Clone Code') {
+      steps {
+        git 'https://github.com/YOUR_USERNAME/notes-devops-app'
+      }
+    }
+
+    stage('Build Backend Image') {
+      steps {
+        sh 'docker build -t $DOCKERHUB_REPO/notes-backend ./backend'
+      }
+    }
+
+    stage('Build Frontend Image') {
+      steps {
+        sh 'docker build -t $DOCKERHUB_REPO/notes-frontend ./frontend'
+      }
+    }
+
+    stage('Push Images') {
+      steps {
+        sh 'docker push $DOCKERHUB_REPO/notes-backend'
+        sh 'docker push $DOCKERHUB_REPO/notes-frontend'
+      }
+    }
+
+    stage('Deploy with Helm') {
+      steps {
+        sh 'helm upgrade --install mongodb ./helm/mongodb'
+        sh 'helm upgrade --install backend ./helm/backend'
+        sh 'helm upgrade --install frontend ./helm/frontend'
+      }
+    }
+  }
+}
