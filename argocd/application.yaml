@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/itsakrana/notes-devops-app
+    repoURL: https://github.com/itsakrana/NotePad-Project.git
     targetRevision: HEAD
     path: helm
 
