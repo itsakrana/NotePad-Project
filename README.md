@@ -40,7 +40,7 @@ GitHub → Jenkins → DockerHub → Kubernetes (Minikube) → Helm → ArgoCD �
 ---
 
 **📁 Project Structure**
-
+<br>
 notes-devops-app/
 │
 ├── backend/ # Node.js API
@@ -51,10 +51,9 @@ notes-devops-app/
 ├── monitoring/ # Prometheus & Grafana setup
 ├── docker-compose.yml
 └── README.md
-
+</br>
 
 ---
-
 **⚙️ CI/CD Pipeline Flow**
 
 1. Clone code from GitHub
@@ -97,10 +96,10 @@ helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring
 **Access Grafana Dashboard**
 http://localhost:3000
 
-Login:
+Login:<br>
 Username: admin
 Password: prom-operator
-
+</br>
 **Recommended Dashboards**
 
 Kubernetes Cluster Monitoring → 7249
