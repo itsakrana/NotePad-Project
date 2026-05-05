@@ -40,18 +40,17 @@ GitHub → Jenkins → DockerHub → Kubernetes (Minikube) → Helm → ArgoCD �
 ---
 
 **📁 Project Structure**
-<br>
+```text
 notes-devops-app/
 │
-├── backend/ # Node.js API
-├── frontend/ # React UI
-├── helm/ # Helm Charts (backend, frontend, mongodb)
-├── argocd/ # ArgoCD configuration
-├── jenkins/ # Jenkins pipeline
-├── monitoring/ # Prometheus & Grafana setup
-├── docker-compose.yml
-└── README.md
-</br>
+├── backend/
+├── frontend/
+├── helm/
+├── argocd/
+├── jenkins/
+├── monitoring/
+└── docker-compose.yml
+```
 
 ---
 **⚙️ CI/CD Pipeline Flow**
